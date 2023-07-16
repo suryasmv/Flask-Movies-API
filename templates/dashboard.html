@@ -1,0 +1,103 @@
+<!-- dashboard.html
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to the Dashboard</h1>
+    <h2>Movie Titles:</h2>
+    <ul>
+        {% for movie in movies %}
+            <li>
+                <h3>{{ movie['title'] }}</h3>
+                <p>{{ movie['overview'] }}</p>
+                <img src="https://image.tmdb.org/t/p/w500/{{ movie['poster_path'] }}" alt="{{ movie['title'] }}">
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html> -->
+<!-- dashboard.html -->
+<!-- dashboard.html -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 30px;
+        }
+
+        .movie-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .movie-details {
+            margin-top: 10px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .movie-poster {
+            width: 200px;
+            height: auto;
+            margin-top: 10px;
+        }
+
+        .logout-button {
+            float: right;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <a class="logout-button" href="/logout">Logout</a>
+    <h1>Welcome to the Dashboard</h1>
+    <h2>Movies:</h2>
+    <ul>
+        <center>
+            {% for  movie in movies %}
+            <img class="movie-poster" src="https://image.tmdb.org/t/p/w500/{{ movie['poster_path'] }}" alt="{{ movie['title'] }}">
+            <li>
+                <h3 class="movie-title">{{ movie['title'] }}</h3>
+                <div class="movie-details">
+                    <p><strong>Original Title:</strong> {{ movie['original_title'] }}</p>
+                    <p><strong>Overview:</strong> {{ movie['overview'] }}</p>
+                    <p><strong>Release Date:</strong> {{ movie['release_date'] }}</p>
+                    <p><strong>Popularity:</strong> {{ movie['popularity'] }}</p>
+                    <p><strong>Vote Average:</strong> {{ movie['vote_average'] }}</p>
+                    <p><strong>Vote Count:</strong> {{ movie['vote_count'] }}</p>
+                    <p><strong>Genre IDs:</strong> {{ movie['genre_ids'] }}</p>
+                    <p><strong>Adult:</strong> {% if movie['adult'] %}Yes{% else %}No{% endif %}</p>
+                    <p><strong>Video:</strong> {% if movie['video'] %}Yes{% else %}No{% endif %}</p>
+                </div>
+            </li>
+            <hr>
+            {% endfor %}
+        </center>
+    </ul>
+</body>
+</html>
